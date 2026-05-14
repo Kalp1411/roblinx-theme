@@ -1,55 +1,8 @@
-/*----------------------------------------------------------------------------------- 
-
-Template Name: Fexo - IT Solution & Technology HTML Template
-URI: https://nayonacademy.com/
-Description: Fexo is a clean, modern, and fully responsive HTML5 template specially designed for IT Solutions, Technology, Software, SaaS, Startup, and Business websites. Built with the latest Bootstrap framework, Fexo offers a powerful and flexible design system that adapts perfectly to all devices and screen sizes.
-Author: Themeservices
-Author URI: https://themeforest.net/user/themeservices
-Version: 1.0 
-
-
-------------------------------------------------------
-   CSS INDEX
------------------------------------------------------
-
-    # Components
-        # Base CSS
-        # Common CSS
-        # Preloader CSS
-        # Offcanvas CSS
-        # Animation CSS
-        # Button CSS
-    # Sections
-       # Header CSS
-       # Hero Section CSS
-       # About Section CSS
-       # Features Section CSS
-       # Service Section CSS
-       # Counter Section CSS
-       # Process Section CSS
-       # Project Section CSS
-       # Pricing Section CSS
-       # Faq Section CSS
-       # Testimonial Section CSS
-       # Company Section CSS
-       # CTA Section CSS
-       # Contact Section CSS
-       # Error Section CSS
-       # Footer CSS
--------------------------------------------------------    */
-/*---- 
-
-====================
-1. Base CSS
-    # base  CSS
-====================
-
-----*/
-/* Base CSS */
 :root {
-  --primary-color: #FF3B00;
+  --primary-color: #2c4f91;
   --secondary-color: #6D30FB;
   --heading-color: #010F34;
+  --process-curve-color: #dadada;
   --primary-black-color: #010F34;
   --gray-color: #F8F8F8;
   --white-color: #ffffff;
@@ -530,13 +483,11 @@ label {
 
 /* Preloader CSS */
 .preloader {
-  bottom: 0;
-  height: 100%;
-  left: 0;
   position: fixed;
-  right: 0;
   top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   z-index: 99999;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -547,39 +498,119 @@ label {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: var(--white-color);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f2027 100%);
+  -webkit-animation: preloader-fade-out 0.6s ease-in-out 2.4s forwards;
+          animation: preloader-fade-out 0.6s ease-in-out 2.4s forwards;
 }
-.preloader .loading, .preloader .loading-wrapper {
-  height: 100px;
+
+.preloader-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.loading-spinner {
   position: relative;
   width: 100px;
-  border-radius: 100%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.preloader .loading-wrapper {
-  margin: 40px auto;
-}
-.preloader .loading-wrapper .loading {
-  border: 1px solid transparent;
-  border-color: transparent var(--primary-black-color) transparent var(--primary-black-color);
-  -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
-          animation: rotate-loading 1.5s linear 0s infinite normal;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-.preloader .loading-wrapper #loading-icon {
+
+.spinner-ring {
   position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--primary-color);
+  border-right-color: var(--secondary-color);
+  -webkit-animation: spin-ring 1.2s linear infinite;
+          animation: spin-ring 1.2s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  width: 100px;
+  height: 100px;
+}
+
+.spinner-ring:nth-child(2) {
+  -webkit-animation-duration: 1.8s;
+          animation-duration: 1.8s;
+  width: 70px;
+  height: 70px;
+  -webkit-animation-direction: reverse;
+          animation-direction: reverse;
+  border-top-color: var(--secondary-color);
+  border-right-color: var(--primary-color);
+}
+
+.spinner-ring:nth-child(3) {
+  -webkit-animation-duration: 2.4s;
+          animation-duration: 2.4s;
+  width: 40px;
+  height: 40px;
+  border-top-color: var(--primary-color);
+  border-right-color: var(--secondary-color);
+}
+
+.spinner-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-}
-.preloader .loading-wrapper #loading-icon img {
-  width: 40px;
+  -webkit-animation: pulse-dot 1.2s ease-in-out infinite;
+          animation: pulse-dot 1.2s ease-in-out infinite;
 }
 
-@-webkit-keyframes rotate-loading {
+.preloader-text {
+  text-align: center;
+  color: var(--white-color);
+}
+
+.preloader-text h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin: 0;
+  color: var(--white-color);
+  -webkit-animation: fade-in-out 1.2s ease-in-out infinite;
+          animation: fade-in-out 1.2s ease-in-out infinite;
+}
+
+.preloader-text p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 8px 0 0 0;
+  color: var(--primary-color);
+  -webkit-animation: typing 1.5s steps(7, end) infinite;
+          animation: typing 1.5s steps(7, end) infinite;
+}
+
+@-webkit-keyframes spin-ring {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -590,7 +621,7 @@ label {
   }
 }
 
-@keyframes rotate-loading {
+@keyframes spin-ring {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -598,6 +629,84 @@ label {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes pulse-dot {
+  0%, 100% {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+            transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+            transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes fade-in-out {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes typing {
+  0% {
+    content: '';
+  }
+}
+
+@keyframes typing {
+  0% {
+    content: '';
+  }
+}
+
+@-webkit-keyframes preloader-fade-out {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes preloader-fade-out {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 /* Offcanvas Overlay */
@@ -1880,7 +1989,7 @@ label {
   margin-top: 20px;
 }
 .hero-wrapper_two .hero-content {
-  margin-bottom: 190px;
+  margin-bottom: 10px;
 }
 @media screen and (max-width: 1199.98px) {
   .hero-wrapper_two .hero-content {
@@ -1954,7 +2063,7 @@ label {
   }
 }
 .hero-wrapper_two .hero-content p {
-  max-width: 520px;
+  /* max-width: 520px; */
   color: var(--white-color);
   margin-bottom: 35px;
 }
@@ -4150,19 +4259,19 @@ label {
           transform: rotate(45deg);
 }
 .axis-progress-item .step.step-one:after {
-  border-top-color: var(--heading-color);
+  border-top-color: var(--process-curve-color);
 }
 .axis-progress-item .step.step-two:after {
-  border-top-color: var(--heading-color);
-  border-right-color: var(--heading-color);
+  border-top-color: var(--process-curve-color);
+  border-right-color: var(--process-curve-color);
 }
 .axis-progress-item .step.step-three:after {
-  border-top-color: var(--heading-color);
-  border-right-color: var(--heading-color);
-  border-bottom-color: var(--heading-color);
+  border-top-color: var(--process-curve-color);
+  border-right-color: var(--process-curve-color);
+  border-bottom-color: var(--process-curve-color);
 }
 .axis-progress-item .step.step-four:after {
-  border-color: var(--heading-color);
+  border-color: var(--process-curve-color);
 }
 .axis-progress-item .content h5 {
   margin-bottom: 15px;
@@ -6676,4 +6785,376 @@ label {
 .axis-process_one .container {
     position: relative;
     z-index: 2;
+}
+
+/*========================
+    Technology Section CSS
+==========================*/
+
+.axis-technology_one {
+  background-color: #f8f9fa;
+}
+
+.axis-technology_one .tech-categories {
+  text-align: center;
+}
+
+.axis-technology_one .category-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tech-category-btn {
+  padding: 12px 28px;
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--heading-color);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tech-category-btn:hover,
+.tech-category-btn.active {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.tech-grid .tech-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-grid .tech-item:hover {
+  transform: translateY(-10px);
+}
+
+.tech-box {
+  padding: 20px 10px;
+  background-color: var(--white-color);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-box:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.tech-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tech-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .axis-technology_one .category-buttons {
+    gap: 10px;
+  }
+
+  .tech-category-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .tech-box {
+    padding: 20px 15px;
+  }
+
+  .tech-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
+  .tech-name {
+    font-size: 14px;
+  }
+}
+
+/*========================
+    Newsletter Section CSS
+==========================*/
+
+.newsletter-area {
+  position: relative;
+  overflow: hidden;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+.newsletter-area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  z-index: 1;
+}
+
+.newsletter-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.newsletter-content {
+  text-align: left;
+}
+
+.newsletter-icon {
+  font-size: 48px;
+  color: var(--white-color);
+  margin-bottom: 20px;
+}
+
+.newsletter-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white-color);
+  margin-bottom: 10px;
+  font-family: var(--heading-font);
+}
+
+.newsletter-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+}
+
+.subscribe-form {
+  width: 100%;
+}
+
+.subscribe-form .form-group {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.subscribe-form .form-control {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  background-color: var(--white-color);
+  color: var(--text-color);
+}
+
+.subscribe-form .form-control::placeholder {
+  color: #999;
+}
+
+.subscribe-form .form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-btn {
+  padding: 16px 30px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.subscribe-btn:hover {
+  background-color: #FF5C1A;
+  transform: translateX(5px);
+}
+
+.subscribe-btn i {
+  font-size: 12px;
+}
+
+@media (max-width: 991.98px) {
+  .newsletter-content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .newsletter-form {
+    justify-content: center;
+  }
+
+  .subscribe-form .form-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .subscribe-form .form-control,
+  .subscribe-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .newsletter-area {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .newsletter-title {
+    font-size: 24px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 14px;
+  }
+
+  .subscribe-form .form-control {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .subscribe-btn {
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+}
+
+/* Footer Newsletter Widget */
+.footer-newsletter-widget .widget-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-newsletter-widget .subscribe-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-newsletter-widget .subscribe-form .form-group {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+
+.footer-newsletter-widget .subscribe-form .form-control {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white-color);
+}
+
+.footer-newsletter-widget .subscribe-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-newsletter-widget .subscribe-form .form-control:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color);
+}
+
+.footer-newsletter-widget .subscribe-btn {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.footer-newsletter-widget .subscribe-btn:hover {
+  background-color: #FF5C1A;
+  transform: translateX(3px);
+}
+
+/* Contact Group Styling */
+.contact-group {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-group .axis-info-box {
+  margin-bottom: 12px !important;
+}
+
+.contact-group .axis-info-box:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 991.98px) {
+  .footer-widget-area {
+    padding-top: 60px !important;
+  }
+
+  .footer-newsletter-widget .subscribe-form .form-group {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .footer-newsletter-widget .subscribe-form .form-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-newsletter-widget .subscribe-form .form-control,
+  .footer-newsletter-widget .subscribe-btn {
+    width: 100%;
+  }
+
+  .contact-group {
+    padding-bottom: 15px;
+  }
 }

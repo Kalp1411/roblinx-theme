@@ -457,6 +457,38 @@
         });
     }
 
+    //===== Technology Filter
+
+    function technologyFilter() {
+        const filterButtons = document.querySelectorAll('.tech-category-btn');
+        const techItems = document.querySelectorAll('.tech-item');
+
+        if (filterButtons.length > 0) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter items
+                    techItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                            }, 10);
+                        } else {
+                            item.style.display = 'none';
+                            item.style.opacity = '0';
+                        }
+                    });
+                });
+            });
+        }
+    }
+
     //===== Aos Animation
 
     AOS.init({
@@ -469,6 +501,7 @@
         mainMenu();
         offCanvas();
         dynamicBackground();
+        technologyFilter();
     });
 
 })(window.jQuery);
