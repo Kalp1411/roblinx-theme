@@ -16,6 +16,12 @@ html {
   font-size: 100%;
 }
 
+/* custom css */
+.cursor-pointer{
+  cursor: pointer;
+}
+/* end custom css */
+
 * {
   margin: 0;
   padding: 0;
@@ -1945,7 +1951,7 @@ label {
 }
 
 .hero-wrapper_two {
-  padding: 220px 0 120px;
+  padding: 220px 0 150px;
   position: relative;
   z-index: 1;
 }
